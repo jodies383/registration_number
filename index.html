@@ -10,22 +10,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registration Numbers</title>
 </head>
 
 <body>
     <div class="regDiv">
         <div class="regHead">
-            <h1>Registration number:</h1>
+            <h1>Registration Numbers</h1>
+            <p>Enter a registration number in the text box below</p>
         </div>
+        <span class="errorMessage"></span>
         <div class="textBox">
             <input type="text" name="" value="" placeholder="enter a registration number" class="regNumText">
-        </div>
-        <div class="addBtn">
             <button class="button-primary add" type="button" name="button">ADD</button>
         </div>
-        <div>
-            <span class="displayRegNum"></span>
+        <div class="radioBtns">
+            <label class="cpt">
+                <input type="radio" name="towns" class="langRadio" value="cpt">
+                <span class="label-body">Cape Town</span>
+            </label>
+            <label class="paarl">
+                <input type="radio" name="towns" class="langRadio" value="paarl">
+                <span class="label-body">Paarl</span>
+            </label>
+            <label class="george">
+            <input type="radio" name="towns" class="langRadio" value="george">
+            <span class="label-body">George</span>
+            </label>
+        </div>
+        <div class="Btns">
+            <button class="button-primary show" type="button" name="button">SHOW</button>
+            <button onClick="window.location.reload();" class="button-primary reset" type="button" name="button">RESET</button>
+        </div>
+      
+        <div class="regDisplay">
+            <span class="displayRegNum">
+                <div id="list">
+                    
+                  </div>
+            </span>
         </div>
 
     </div>
@@ -44,7 +67,7 @@
 
 
 
-
+    <script src="registration_number_factory.js" charset="utf-8"></script>
     <script src="registration_number.js" charset="utf-8"></script>
 </body>
 
