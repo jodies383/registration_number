@@ -1,6 +1,7 @@
 body {
   font-family: 'Chakra Petch', sans-serif;
   background-color: rgb(203, 240, 140);
+  
 }
 
 .regDiv {
@@ -72,6 +73,10 @@ input[type=text], select {
   margin: 2%;
 }
 .errorMessage{
+  color: red;
+  font-weight: bold;
+}
+.errorMessage2{
   color: red;
   font-weight: bold;
 }

@@ -11,13 +11,17 @@ var errorMessage = document.querySelector(".errorMessage")
 var showBtn = document.querySelector(".show")
 
 addBtn.addEventListener('click', listReg);
-//showBtn = addEventListener('click', towns)
+addBtn.addEventListener('click', myReg);
+showBtn.addEventListener('click', filterTowns)
 
-//var existingReg;
+var existingReg;
 
 if (localStorage['regList']) {
-    JSON.parse(localStorage.getItem('regList'));
+    existingReg = JSON.parse(localStorage.getItem('regList'));
+
 }
+
+let regRef = registration(existingReg);
 
 var regEx = /^[A-Z]{2,3} [0-9]{3}-[0-9]{0,3}$/
 
@@ -34,42 +38,45 @@ function listReg() {
     li.style.textAlign = 'center';
 
     if (addRegNum.value && regEx.test(addRegNum.value)) {
-        li.appendChild(document.createTextNode(addRegNum.value));
+        li.innerHTML = (addRegNum.value);
         ul.appendChild(li);
-        localStorage.setItem('regList', JSON.stringify(addRegNum.value));
-
-    } else {
-        (errorMessage.innerHTML = "Please enter a registration number")
     }
-  
+    else if (!regEx.test(addRegNum.value)) {
+        (errorMessage.innerHTML = regRef.validReg(addRegNum.value))
+    }
+
+    else {
+        (errorMessage.innerHTML = regRef.noReg(addRegNum.value))
+    }
+
 
     setTimeout(function () {
         errorMessage.innerHTML = "";
     }, 2000);
-}
-function towns(){
-    var checkedRadioBtn = document.querySelector("input[name='towns']:checked").value;
 
-for (var i = 0; i < li.length; i++)
-var loopLi = li[i];
-if (checkedRadioBtn === "Cape Town"){
-    return loopLi.startsWith("CY")
-}else if (checkedRadioBtn === "Paarl"){
-    return loopLi.startsWith("CJ")
-}else if (checkedRadioBtn === "George"){
-    return loopLi.startsWith("CAW")
-}
+    if (regRef.sameReg(addRegNum.value)) {
+        li.innerHTML = ("")
+        li.style.backgroundColor = 'none';
+        li.style.borderStyle = "none";
+        li.style.borderColor = 'none';
+        li.style.borderRadius = 'none';
+        li.style.fontWeight = 'none';
+        li.style.textAlign = 'none';
+        errorMessage.innerHTML = regRef.sameReg(addRegNum.value)
+    }
 
 }
-
 
 function myReg() {
-    regFunction.enterRegNum(addRegNum.value)
-
+    regRef.addRegNum(addRegNum.value)
 }
+function filterTowns(){
+    var checkedRadioBtn = document.querySelector("input[name='towns']:checked").value;
 
-
-
+    
+regRef.towns(checkedRadioBtn)
+displayRegNum.innerHTML = regRef.towns(checkedRadioBtn)
+}
 
 resetBtn.addEventListener('click', function () {
     localStorage.removeItem('regList')
