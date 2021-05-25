@@ -11,11 +11,6 @@ function registration(existingReg) {
         }
         localStorage.setItem('regList', JSON.stringify(regNum));
     }
-    function noReg(enterName) {
-        if (!enterName && !regEx.test(enterName)) {
-            return "Please enter a registration number"
-        }
-    }
     function validReg(enterName) {
         if (!regEx.test(enterName)) {
             return "Please enter a valid registration number"
@@ -27,15 +22,27 @@ function registration(existingReg) {
         }
     }
     function towns(checkedRadioBtn) {
-        // if (checkedRadioBtn === "Cape Town") {
-            var newArr = regNum.filter((reg) => reg.startsWith("CY"))
-        //}
-        return newArr
+
+        var cptArr = regNum.filter((reg) => reg.startsWith("CA"))
+        var paarlArr = regNum.filter((reg) => reg.startsWith("CJ"))
+        var belArr = regNum.filter((reg) => reg.startsWith("CY"))
+
+
+        if (checkedRadioBtn === "cpt") {
+            return cptArr
+        } else if (checkedRadioBtn === "paarl") {
+            return paarlArr
+        } else if (checkedRadioBtn === "bellville") {
+            return belArr
+        } else return regNum
 
     }
+
+
+
+
     return {
         addRegNum,
-        noReg,
         sameReg,
         validReg,
         towns
