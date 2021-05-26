@@ -38,9 +38,6 @@ function registration(existingReg) {
 
     }
 
-
-
-
     return {
         addRegNum,
         sameReg,
@@ -48,12 +45,3 @@ function registration(existingReg) {
         towns
     }
 }
-   // for (var i = 0; i < regNum; i++)
-        //     var loopReg = regNum[i]
-        // if (checkedRadioBtn === "Cape Town") {
-        //     return (loopReg.startsWith("CY"))
-        // } else if (checkedRadioBtn === "Paarl") {
-        //     return loopReg.startsWith("CJ")
-        // } else if (checkedRadioBtn === "George") {
-        //     return loopReg.startsWith("CAW")
-        // }

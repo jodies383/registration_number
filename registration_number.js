@@ -29,17 +29,11 @@ var ul = document.getElementById("list");
 
 
 function listReg() {
-    var li = document.createElement("object");
-    li.style.backgroundColor = '#f5b342';
-    li.style.borderStyle = "solid";
-    li.style.borderColor = 'black';
-    li.style.borderRadius = '4px';
-    li.style.fontWeight = 'bold';
-    li.style.textAlign = 'center';
+  
+    
 
-    if (regEx.test(addRegNum.value)) {
-        li.innerHTML = (addRegNum.value);
-        ul.appendChild(li);
+    if (regEx.test(addRegNum.value) && (!regRef.sameReg(addRegNum.value))) {
+        ul.innerHTML +=  '<li class="listItems">' + (addRegNum.value) + "</li>";
     }
     else if (!regEx.test(addRegNum.value)) {
         (errorMessage.innerHTML = regRef.validReg(addRegNum.value))
@@ -48,17 +42,12 @@ function listReg() {
 
     setTimeout(function () {
         errorMessage.innerHTML = "";
-    }, 2000);
+    }, 3000);
 
     if (regRef.sameReg(addRegNum.value)) {
-        li.innerHTML = ("")
-        li.style.backgroundColor = 'none';
-        li.style.borderStyle = "none";
-        li.style.borderColor = 'none';
-        li.style.borderRadius = 'none';
-        li.style.fontWeight = 'none';
-        li.style.textAlign = 'none';
         errorMessage.innerHTML = regRef.sameReg(addRegNum.value)
+        
+
     }
 
 }
@@ -68,10 +57,13 @@ function myReg() {
 }
 function filterTowns() {
     var checkedRadioBtn = document.querySelector("input[name='towns']:checked");
+    var stored = regRef.towns(checkedRadioBtn.value);
 
-    // regRef.towns(checkedRadioBtn.value)
-    
-    displayRegNum.innerHTML = regRef.towns(checkedRadioBtn.value)
+    ul.innerHTML = "";
+
+    for (var i = 0; i < stored.length; i++) {
+        ul.innerHTML += '<li class="listItems">' + stored[i] + "</li>";
+    }
     checkedRadioBtn.checked = false
 }
 
