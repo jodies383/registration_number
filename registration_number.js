@@ -8,11 +8,15 @@ var resetBtn = document.querySelector(".reset")
 
 var errorMessage = document.querySelector(".errorMessage")
 
-var showBtn = document.querySelector(".show")
+var errorMessage2 = document.querySelector(".errorMessage2")
 
+var showBtn = document.querySelector(".show")
 addBtn.addEventListener('click', listReg);
+
 addBtn.addEventListener('click', myReg);
+
 showBtn.addEventListener('click', filterTowns)
+showBtn.addEventListener('click', townError)
 
 var existingReg;
 
@@ -29,11 +33,22 @@ var ul = document.getElementById("list");
 
 
 function listReg() {
-  
-    
 
-    if (regEx.test(addRegNum.value) && (!regRef.sameReg(addRegNum.value))) {
-        ul.innerHTML +=  '<li class="listItems">' + (addRegNum.value) + "</li>";
+    regRef.addRegNum(addRegNum.value)
+
+    var store = regRef.returnReg()
+
+
+    localStorage.setItem('regList', JSON.stringify(store));
+
+    ul.innerHTML = ""
+    var regStored;
+    if (regEx.test(addRegNum.value)) {
+        for (var i = 0; i < store.length; i++) {
+            regStored = store[i]
+            // ul.innerHTML += '<li class="listItems">' + store[i] + "</li>";
+        }
+        ul.innerHTML += '<li class="listItems">' + (regStored) + "</li>";
     }
     else if (!regEx.test(addRegNum.value)) {
         (errorMessage.innerHTML = regRef.validReg(addRegNum.value))
@@ -46,17 +61,20 @@ function listReg() {
 
     if (regRef.sameReg(addRegNum.value)) {
         errorMessage.innerHTML = regRef.sameReg(addRegNum.value)
-        
+
 
     }
 
 }
 
 function myReg() {
+
     regRef.addRegNum(addRegNum.value)
 }
 function filterTowns() {
+
     var checkedRadioBtn = document.querySelector("input[name='towns']:checked");
+
     var stored = regRef.towns(checkedRadioBtn.value);
 
     ul.innerHTML = "";
@@ -65,6 +83,17 @@ function filterTowns() {
         ul.innerHTML += '<li class="listItems">' + stored[i] + "</li>";
     }
     checkedRadioBtn.checked = false
+
+}
+
+function townError() {
+    var uncheckedRadioBtn = document.querySelector("input[name='towns']:checked");
+
+    errorMessage2.innerHTML = regRef.noTowns(uncheckedRadioBtn)
+
+    setTimeout(function () {
+        errorMessage2.innerHTML = "";
+    }, 3000);
 }
 
 resetBtn.addEventListener('click', function () {

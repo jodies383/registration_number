@@ -9,17 +9,21 @@ function registration(existingReg) {
         if (!regNum.includes(enterName) && regEx.test(enterName)) {
             regNum.push(enterName)
         }
-        localStorage.setItem('regList', JSON.stringify(regNum));
+        else {
+            sameReg 
+        }
+    }
+    function returnReg() {
+        return regNum
     }
     function validReg(enterName) {
         if (!regEx.test(enterName)) {
             return "Please enter a valid registration number"
         }
     }
-    function sameReg(enterName) {
-        if (regNum.includes(enterName)) {
+    function sameReg() {
             return "Registration number already exists"
-        }
+    
     }
     function towns(checkedRadioBtn) {
 
@@ -36,12 +40,21 @@ function registration(existingReg) {
             return belArr
         } else return regNum
 
-    }
+}
+function noTowns(RadioBtn) {
+    
+    if (!RadioBtn) {
+        return "Please select a town"
+    } else return ""
+    
+}
 
-    return {
-        addRegNum,
-        sameReg,
-        validReg,
-        towns
-    }
+return {
+    addRegNum,
+    sameReg,
+    validReg,
+    towns,
+    noTowns,
+    returnReg
+}
 }
