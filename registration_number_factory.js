@@ -2,15 +2,12 @@ function registration(existingReg) {
 
     var regNum = existingReg || []
 
-    var regEx = /^[A-z]{2,3} [0-9]{3}-[0-9]{0,3}$/
+    var regEx = /^[A-Z]{2} [0-9]{3}-[0-9]{3}$/i;
 
     function addRegNum(enterName) {
 
         if (!regNum.includes(enterName) && regEx.test(enterName)) {
             regNum.push(enterName)
-        }
-        else {
-            sameReg 
         }
     }
     function returnReg() {
@@ -21,9 +18,13 @@ function registration(existingReg) {
             return "Please enter a valid registration number"
         }
     }
-    function sameReg() {
+    function sameReg(enterName) {
+        if (regNum.includes(enterName)) {
             return "Registration number already exists"
-    
+        } else if (!regNum.includes(enterName)){
+            return ""
+        }
+
     }
     function towns(checkedRadioBtn) {
 
@@ -40,21 +41,21 @@ function registration(existingReg) {
             return belArr
         } else return regNum
 
-}
-function noTowns(RadioBtn) {
-    
-    if (!RadioBtn) {
-        return "Please select a town"
-    } else return ""
-    
-}
+    }
+    function noTowns(RadioBtn) {
 
-return {
-    addRegNum,
-    sameReg,
-    validReg,
-    towns,
-    noTowns,
-    returnReg
-}
+        if (!RadioBtn) {
+            return "Please select a town"
+        } else return ""
+
+    }
+
+    return {
+        addRegNum,
+        sameReg,
+        validReg,
+        towns,
+        noTowns,
+        returnReg
+    }
 }
