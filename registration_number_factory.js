@@ -6,9 +6,9 @@ function registration(existingReg) {
 
     function addRegNum(enterName) {
 
-        if (!regNum.includes(enterName) && regEx.test(enterName)) {
-            regNum.push(enterName)
-        }
+        if (!regNum.includes(enterName.toUpperCase()) && regEx.test(enterName.toUpperCase())) {
+            regNum.push(enterName.toUpperCase())
+        } else return sameReg()
     }
     function returnReg() {
         return regNum
@@ -18,20 +18,15 @@ function registration(existingReg) {
             return "Please enter a valid registration number"
         }
     }
-    function sameReg(enterName) {
-        if (regNum.includes(enterName)) {
-            return "Registration number already exists"
-        } else if (!regNum.includes(enterName)){
-            return ""
-        }
+    function sameReg() {
+        return "Registration number already exists"
 
     }
-    function towns(checkedRadioBtn) {
 
+    function towns(checkedRadioBtn) {
         var cptArr = regNum.filter((reg) => reg.startsWith("CA"))
         var paarlArr = regNum.filter((reg) => reg.startsWith("CJ"))
         var belArr = regNum.filter((reg) => reg.startsWith("CY"))
-
 
         if (checkedRadioBtn === "cpt") {
             return cptArr
@@ -39,9 +34,21 @@ function registration(existingReg) {
             return paarlArr
         } else if (checkedRadioBtn === "bellville") {
             return belArr
-        } else return regNum
+        } else if (checkedRadioBtn === "all") {
+            return regNum
+        } else if (cptArr.length === 0 || paarlArr.length === 0 || belArr.length === 0 || regNum.length === 0) {
+            return noTownFound()
+        }
+
 
     }
+
+    function noTownFound() {
+        return ("No registration numbers found")
+    }
+
+
+
     function noTowns(RadioBtn) {
 
         if (!RadioBtn) {
@@ -56,6 +63,7 @@ function registration(existingReg) {
         validReg,
         towns,
         noTowns,
-        returnReg
+        returnReg,
+        noTownFound
     }
 }

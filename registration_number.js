@@ -14,10 +14,8 @@ var showBtn = document.querySelector(".show")
 
 addBtn.addEventListener('click', listReg);
 
-// addBtn.addEventListener('click', myReg);
-
 showBtn.addEventListener('click', filterTowns)
-// showBtn.addEventListener('click', townError)
+
 
 var existingReg;
 
@@ -34,58 +32,61 @@ var ul = document.getElementById("list");
 
 
 function listReg() {
-
-
-    regRef.addRegNum(addRegNum.value)
-
     var store = regRef.returnReg()
 
+    if (!store.includes(addRegNum.value.toUpperCase())) {
+        regRef.addRegNum(addRegNum.value.toUpperCase())
 
-    localStorage.setItem('regList', JSON.stringify(store));
 
-    ul.innerHTML = ""
-    // var regStored;
-    if (regEx.test(addRegNum.value)) {
-        for (var i = 0; i < store.length; i++) {
-            // regStored += store[i]
-            ul.innerHTML += '<li class="listItems">' + store[i] + "</li>";
+        localStorage.setItem('regList', JSON.stringify(store));
+
+        ul.innerHTML = ""
+
+        if (regEx.test(addRegNum.value)) {
+            for (var i = 0; i < store.length; i++) {
+
+
+                ul.innerHTML += '<li class="listItems">' + store[i] + "</li>";
+            }
         }
-        // ul.innerHTML += '<li class="listItems">' + (regStored) + "</li>";
+        else if (!regEx.test(addRegNum.value)) {
+            (errorMessage2.innerHTML = regRef.validReg(addRegNum.value))
+
+            setTimeout(function () {
+                errorMessage2.innerHTML = "";
+            }, 3000);
+
+        }
+    } else {
+
+        errorMessage.innerHTML = regRef.sameReg()
+
+        setTimeout(function () {
+            errorMessage.innerHTML = "";
+        }, 3000);
     }
-    else if (!regEx.test(addRegNum.value)) {
-        (errorMessage.innerHTML = regRef.validReg(addRegNum.value))
-    }
-
-    errorMessage.innerHTML = regRef.sameReg(addRegNum.value)
-
-    setTimeout(function () {
-        errorMessage.innerHTML = "";
-    }, 3000);
-
-
-   
-
-
-
 
 }
 
-// function myReg() {
-
-//     regRef.addRegNum(addRegNum.value)
-// }
 function filterTowns() {
 
     var checkedRadioBtn = document.querySelector("input[name='towns']:checked");
 
     if (checkedRadioBtn) {
         var stored = regRef.towns(checkedRadioBtn.value);
-
+        if (stored.length === 0) {
+            errorMessage.innerHTML = regRef.noTownFound();
+            setTimeout(function () {
+                errorMessage.innerHTML = "";
+            }, 2000);
+        }
         ul.innerHTML = "";
 
         for (var i = 0; i < stored.length; i++) {
             ul.innerHTML += '<li class="listItems">' + stored[i] + "</li>";
+
         }
+
         checkedRadioBtn.checked = false
     } else
         errorMessage2.innerHTML = regRef.noTowns(checkedRadioBtn)
@@ -93,10 +94,17 @@ function filterTowns() {
     setTimeout(function () {
         errorMessage2.innerHTML = "";
     }, 3000);
+
 }
-
-
 
 resetBtn.addEventListener('click', function () {
     localStorage.removeItem('regList')
 });
+
+if (regEx.test(addRegNum.value)) {
+    for (var i = 0; i < store.length; i++) {
+
+
+        ul.innerHTML += '<li class="listItems">' + store[i] + "</li>";
+    }
+}
