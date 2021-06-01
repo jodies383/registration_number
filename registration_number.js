@@ -12,6 +12,7 @@ var errorMessage2 = document.querySelector(".errorMessage2")
 
 var showBtn = document.querySelector(".show")
 
+var counter = document.querySelector(".count")
 addBtn.addEventListener('click', listReg);
 
 showBtn.addEventListener('click', filterTowns)
@@ -23,6 +24,15 @@ if (localStorage['regList']) {
     existingReg = JSON.parse(localStorage.getItem('regList'));
 
 }
+console.log(existingReg);
+
+window.onload = () => {
+    for (let i = 0; i < existingReg.length; i++) {
+        const element = existingReg[i];
+        ul.innerHTML += '<li class="listItems">' + element+ "</li>";
+
+    }
+};
 
 let regRef = registration(existingReg);
 
@@ -30,7 +40,7 @@ var regEx = /^[A-Z]{2} [0-9]{3}-[0-9]{3}$/i;
 
 var ul = document.getElementById("list");
 
-
+counter.innerHTML = existingReg.length
 function listReg() {
     var store = regRef.returnReg()
 
@@ -41,12 +51,15 @@ function listReg() {
         localStorage.setItem('regList', JSON.stringify(store));
 
         ul.innerHTML = ""
+        
 
         if (regEx.test(addRegNum.value)) {
             for (var i = 0; i < store.length; i++) {
 
 
                 ul.innerHTML += '<li class="listItems">' + store[i] + "</li>";
+                counter.innerHTML = existingReg.length
+
             }
         }
         else if (!regEx.test(addRegNum.value)) {

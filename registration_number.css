@@ -100,7 +100,9 @@ input[type=text], select {
   font-weight : bold;
   text-align : center;
 }
-
+.count{
+  font-weight: bold;
+}
 @media (max-width:447px){
   .regHead{
     display: flex;
