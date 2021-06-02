@@ -13,6 +13,7 @@ var errorMessage2 = document.querySelector(".errorMessage2")
 var showBtn = document.querySelector(".show")
 
 var counter = document.querySelector(".count")
+
 addBtn.addEventListener('click', listReg);
 
 showBtn.addEventListener('click', filterTowns)
@@ -40,7 +41,7 @@ var regEx = /^[A-Z]{2} [0-9]{3}-[0-9]{3}$/i;
 
 var ul = document.getElementById("list");
 
-counter.innerHTML = existingReg.length
+// counter.innerHTML = existingReg.length
 function listReg() {
     var store = regRef.returnReg()
 
@@ -58,7 +59,7 @@ function listReg() {
 
 
                 ul.innerHTML += '<li class="listItems">' + store[i] + "</li>";
-                counter.innerHTML = existingReg.length
+                // counter.innerHTML = existingReg.length
 
             }
         }
