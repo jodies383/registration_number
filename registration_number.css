@@ -99,6 +99,7 @@ input[type=text], select {
   border-radius : 4px;
   font-weight : bold;
   text-align : center;
+  width: 15%;
 }
 .count{
   font-weight: bold;
@@ -108,5 +109,9 @@ input[type=text], select {
     display: flex;
     flex-direction: column;
     font-size: medium;
+  }
+  .listItems {
+    width: auto;
+    
   }
 }

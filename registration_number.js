@@ -41,7 +41,6 @@ var regEx = /^[A-Z]{2} [0-9]{3}-[0-9]{3}$/i;
 
 var ul = document.getElementById("list");
 
-// counter.innerHTML = existingReg.length
 function listReg() {
     var store = regRef.returnReg()
 
@@ -51,15 +50,17 @@ function listReg() {
 
         localStorage.setItem('regList', JSON.stringify(store));
 
-        ul.innerHTML = ""
+        
         
 
         if (regEx.test(addRegNum.value)) {
+            ul.innerHTML = ""
+            addRegNum.value = ""
             for (var i = 0; i < store.length; i++) {
 
 
                 ul.innerHTML += '<li class="listItems">' + store[i] + "</li>";
-                // counter.innerHTML = existingReg.length
+               
 
             }
         }
@@ -92,7 +93,7 @@ function filterTowns() {
             errorMessage.innerHTML = regRef.noTownFound();
             setTimeout(function () {
                 errorMessage.innerHTML = "";
-            }, 2000);
+            }, 3000);
         }
         ul.innerHTML = "";
 
