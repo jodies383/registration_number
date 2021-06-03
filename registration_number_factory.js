@@ -2,7 +2,7 @@ function registration(existingReg) {
 
     var regNum = existingReg || []
 
-    var regEx = /^[A-Z]{2} [0-9]{3}-[0-9]{3}$/i;
+    var regEx = /^[A-Z]{2} [0-9]{3}(-[0-9]{3})$|[A-Z]{2} [0-9]{3}([0-9]{3})$|[A-Z]{2} ([0-9]{3} [0-9]{3})$|[A-Z]{2} ([0-9]{4})$/i;
 
     function addRegNum(enterName) {
 

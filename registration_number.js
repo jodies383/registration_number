@@ -37,7 +37,7 @@ window.onload = () => {
 
 let regRef = registration(existingReg);
 
-var regEx = /^[A-Z]{2} [0-9]{3}-[0-9]{3}$/i;
+var regEx = /^[A-Z]{2} [0-9]{3}(-[0-9]{3})$|[A-Z]{2} [0-9]{3}([0-9]{3})$|[A-Z]{2} ([0-9]{3} [0-9]{3})$|[A-Z]{2} ([0-9]{4})$/i;
 
 var ul = document.getElementById("list");
 
