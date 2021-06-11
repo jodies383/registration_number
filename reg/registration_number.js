@@ -115,11 +115,3 @@ function filterTowns() {
 resetBtn.addEventListener('click', function () {
     localStorage.removeItem('regList')
 });
-
-if (regEx.test(addRegNum.value)) {
-    for (var i = 0; i < store.length; i++) {
-
-
-        ul.innerHTML += '<li class="listItems">' + store[i] + "</li>";
-    }
-}

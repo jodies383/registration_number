@@ -2,8 +2,16 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="registration_number.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script type="text/x-template" class="regTemplate">
+        <ul class="listFormatTemplate">
+        {{#each reg}}
+        <li class="listItemstemp">{{store}}{{this}}</li><br>
+        {{/each}}
+        </ul>
+    </script>
 
+    <link rel="stylesheet" href="registration_number.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&display=swap" rel="stylesheet">
 
@@ -20,12 +28,12 @@
             <p>Enter a registration number in the text box below</p>
         </div>
         <div class="regHead2">
-            
+
             <p>Use the format CA 123-456/CA 123 222/CY 112334/CJ 2344</p>
         </div>
         <span class="errorMessage"></span>
         <span class="errorMessage2"></span>
-        
+
         <div class="textBox">
             <input type="text" name="" value="" placeholder="enter a registration number" class="regNumText">
             <button class="button-primary add" type="button" name="button">ADD</button>
@@ -40,32 +48,86 @@
                 <span class="label-body">Paarl (CJ)</span>
             </label>
             <label class="george">
-            <input type="radio" name="towns" class="townRadio" value="bellville">
-            <span class="label-body">Bellville (CY)</span>
+                <input type="radio" name="towns" class="townRadio" value="bellville">
+                <span class="label-body">Bellville (CY)</span>
             </label>
             <label class="all">
                 <input type="radio" name="towns" class="townRadio" value="all">
                 <span class="label-body">Show All</span>
-                </label>
+            </label>
         </div>
         <div class="Btns">
             <button class="button-primary show" type="button" name="button">SHOW</button>
-            <button onClick="window.location.reload();" class="button-primary reset" type="button" name="button">RESET</button>
+            <button onClick="window.location.reload();" class="button-primary reset" type="button"
+                name="button">RESET</button>
             <div class="count"></div>
         </div>
-      
+
         <div class="regDisplay">
             <span class="displayRegNum">
                 <ul class="listFormat" id="list">
-                    
+
+                </ul>
+            </span>
+        </div>
+
+    </div>
+    <div class="regDivtemp">
+        <div class="regHeadtemp">
+            <h1>Registration Numbers</h1>
+            <p>Enter a registration number in the text box below</p>
+        </div>
+        <div class="regHead2temp">
+
+            <p>Use the format CA 123-456/CA 123 222/CY 112334/CJ 2344</p>
+        </div>
+        <div class="warn">
+        <span class="errorMessagetemp"></span>
+        <span class="errorMessage2temp"></span>
+    </div>
+        <div class="textBox">
+            <input type="text" name="" value="" placeholder="enter a registration number" class="regNumTexttemp">
+            <button class="button-primary addtemp" type="button" name="buttonTemp">ADD</button>
+        </div>
+        <div class="radioBtns">
+            <label class="cpt">
+                <input type="radio" name="towns" class="townRadioTemp" value="cpt">
+                <span class="label-body">Cape Town (CA)</span>
+            </label>
+            <label class="paarl">
+                <input type="radio" name="towns" class="townRadioTemp" value="paarl">
+                <span class="label-body">Paarl (CJ)</span>
+            </label>
+            <label class="george">
+                <input type="radio" name="towns" class="townRadioTemp" value="bellville">
+                <span class="label-body">Bellville (CY)</span>
+            </label>
+            <label class="all">
+                <input type="radio" name="towns" class="townRadio" value="all">
+                <span class="label-body">Show All</span>
+            </label>
+        </div>
+        <div class="Btns">
+            <button class="button-primary showtemp" type="button" name="buttonTemp">SHOW</button>
+            <button onClick="window.location.reload();" class="button-primary resettemp" type="button"
+                name="buttonTemp">RESET</button>
+            <div class="count"></div>
+        </div>
+
+        <div class="regDisplaytemp">
+            <span class="displayRegNumTemp">
+                <ul class="listFormatTemp" id="listTemp">
+
                 </ul>
             </span>
         </div>
 
     </div>
 
-    <script src="registration_number_factory.js" charset="utf-8"></script>
-    <script src="registration_number.js" charset="utf-8"></script>
+    <script src="./reg/registration_number_factory.js" charset="utf-8"></script>
+    <script src="./reg/registration_number.js" charset="utf-8"></script>
+    <script src="./template/registration_number_factory_template.js" charset="utf-8"></script>
+    <script src="./template/registration_number_template.js" charset="utf-8"></script>
 </body>
 
 </html>
