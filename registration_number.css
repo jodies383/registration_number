@@ -5,17 +5,17 @@ body {
   
 }
 
-.regDiv, .regDivtemp {
+.regDiv{
   display: flex;
   flex-direction: column;
-  margin: 1%;
-  margin-top: 5%;
-  width: 60%;
-  box-shadow: 0 4px 8px 0 rgb(203, 240, 140), 0 6px 20px 0 rgb(203, 240, 140);
+  margin-left: 12%;
+  margin-top: 7%;
+  width: 75%;
+  box-shadow: 0 4px 4px 0 rgb(203, 240, 140), 0 6px 20px 0 rgb(203, 240, 140);
   background-color: white;
   text-align: center;
 }
-.regHead, .regHeadtemp {
+.regHead{
   font-size: x-large;
 }
 input[type=text], select {
@@ -28,7 +28,9 @@ input[type=text], select {
   box-sizing: border-box;
 }
 
-.add, .addtemp {
+.add{
+  border-radius: 4px;
+
   background-color: white;
   color: black;
   border: 2px solid rgb(203, 240, 140);
@@ -46,7 +48,9 @@ input[type=text], select {
   color: white;
 }
 
-.reset, .show, .resettemp, .showtemp {
+.reset, .show{
+  border-radius: 4px;
+
   background-color: white;
   color: black;
   border: 2px solid rgb(203, 240, 140);
@@ -59,7 +63,7 @@ input[type=text], select {
   cursor: pointer;
 }
 
-.add:hover, .addtemp:hover {
+.add:hover{
   background-color: rgb(203, 240, 140);
   color: white;
 }
@@ -88,25 +92,7 @@ input[type=text], select {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-.listFormatTemplate{
-  padding: 0 0 0 0;
-  text-align: center;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-.listItemstemp{
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 2px;
-  background-color : #f5b342;
-  border: solid black 2px;
-  border-radius : 4px;
-  font-weight : bold;
-  text-align : center;
-  width: 15%;
-}
+
 
 .listItems {
   margin-left: 5px;
